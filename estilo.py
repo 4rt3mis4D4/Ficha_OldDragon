@@ -10,9 +10,12 @@ def rolar_dado(lados, rolagem=1):
 #Classe Personagem
 class Personagem:
     #Construtor: inicializar variáveis
-    def __init__(self, nome):
-        self.nome = nome
+    def __init__(self):
+        self.nome = ""
         self.atributos = {} #Conjunto atributos
+
+    def nome_personagem(self):
+        self.nome = input("Digite o nome do seu personagem: ")
 
 #Classe Estilo: Determinar atributos do personagem criado
 class Estilo(Personagem):
@@ -71,9 +74,9 @@ class Estilo(Personagem):
             resultado, soma = rolar_dado(6, 4)
 
             print(f"\nRolagem {i+1}: {resultado}") #Exibi resultado de todas as rolagens
-            menor_valor = min(resultado) #Identifica o menor valor 
+            menor_valor = min(resultado) #Identifica o menor valor
             resultado.remove(menor_valor) #Remove o menor valor
-            soma_final = sum(resultado) #Realiza a soma sem o menor resultado 
+            soma_final = sum(resultado) #Realiza a soma sem o menor resultado
 
             resultados_rolagem.append(soma_final) #armazenado o resultado das rolagens
             print(f"Rolagem {i+1}: {resultado} (Eliminado: {menor_valor} Total: {soma_final})")
@@ -107,8 +110,8 @@ class Estilo(Personagem):
 
 #Estrutura Main - executável
 if __name__ == "__main__":
-    nome_personagem = input("Digite o nome do seu personagem: ")
-    personagem = Estilo(nome_personagem)
+    personagem = Estilo()
+    personagem.nome_personagem()
 
     while True:
         print("Escolha o seu estilo: ")
