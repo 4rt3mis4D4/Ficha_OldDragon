@@ -28,7 +28,14 @@ class Personagem:
     #Construtor: inicializar variáveis
     def __init__(self):
         self.nome = ""
-        self.atributos = {} #Conjunto atributos
+        self.atributos = {
+            "Força": 0,
+            "Destreza": 0,
+            "Constituição": 0,
+            "Inteligência": 0,
+            "Sabedoria": 0,
+            "Carisma": 0
+        } #Conjunto atributos
 
     def nome_personagem(self):
         self.nome = input("Digite o nome do seu personagem: ")
@@ -38,9 +45,8 @@ class Estilo(Personagem):
     #Função - Estilo Clássico
     def classico (self):
         print("\n\nVocê escolheu o Estilo Clássico!! Vamos para a rolagem de seus atributos: ")
-        nomes_atributos = ["Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma"]
 
-        for atributo in nomes_atributos:
+        for atributo in self.atributos:
             resultado, soma = rolar_dado(6, 3)
             print(f"{atributo}: {resultado} (Total: {soma})")
             self.atributos[atributo] = soma
@@ -57,31 +63,30 @@ class Estilo(Personagem):
 
         print("\nVamos para a rolagem de seus atributos:")
 
-        nomes_atributos = ["Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma"]
         resultados_rolagem = []
 
         #Realizando rolagem de todos os atributos e armazenando em uma lista
-        for i in range(6):
+        for i in range(len(self.atributos)):
             resultado, soma = rolar_dado(6, 3)
             resultados_rolagem.append(soma) #armazenado o resultado das rolagens
             print(f"Rolagem {i+1}: {resultado} (Total: {soma})")
 
         print(f"\nTotal das rolagens: {resultados_rolagem}")
-        print(f"Lista de Atributos: {nomes_atributos}")
         print("\nAgora distribua os valores para os atributos de sua preferência:")
-
-        for atributo in nomes_atributos:
-            print(f"Valores Disponíveis: {resultados_rolagem}")
-            escolha = int(input(f"Escolha o valor para {atributo}: "))
-            print()
-
-            #in - pertence
-            if escolha in resultados_rolagem:
-                resultados_rolagem.remove(escolha) #Remove o valor ja escolhido
-                self.atributos[atributo] = escolha #Adiciona o valor escolhido no atributo
-            else:
-                print("Valor inexistente. Escolha novamente.")
-                nomes_atributos.insert(0, atributo) #volta uma interação
+        
+        for atributo in self.atributos:
+            while True:
+                print(f"Valores Disponíveis: {resultados_rolagem}")
+                try:
+                    escolha = int(input(f"Escolha o valor para {atributo}: "))
+                    if escolha in resultados_rolagem:
+                        resultados_rolagem.remove(escolha)
+                        self.atributos[atributo] = escolha
+                        break
+                    else:
+                        print("Valor inexistente. Escolha novamente.\n")
+                except ValueError:
+                    print("Entrada inválida. Digite um número.\n")
 
         self.mostrar_atributos()
 
@@ -96,10 +101,9 @@ class Estilo(Personagem):
 
         print("\nVamos para a rolagem de seus atributos:")
 
-        nomes_atributos = ["Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma"]
         resultados_rolagem = []
 
-        for i in range(6):
+        for i in range(len(self.atributos)):
             resultado, soma = rolar_dado(6, 4)
 
             print(f"\nRolagem {i+1}: {resultado}") #Exibi resultado de todas as rolagens
@@ -111,22 +115,22 @@ class Estilo(Personagem):
             print(f"Rolagem {i+1}: {resultado} (Eliminado: {menor_valor} Total: {soma_final})")
 
         print(f"\nTotal das rolagens: {resultados_rolagem}")
-        print(f"Lista de Atributos: {nomes_atributos}")
         print("\nAgora distribua os valores para os atributos de sua preferência:")
 
-        for atributo in nomes_atributos:
-            print(f"Valores Disponíveis: {resultados_rolagem}")
-            escolha = int(input(f"Escolha o valor para {atributo}: "))
-            print()
-
-            # in - pertence
-            if escolha in resultados_rolagem:
-                resultados_rolagem.remove(escolha)  # Remove o valor ja escolhido
-                self.atributos[atributo] = escolha  # Adiciona o valor escolhido no atributo
-            else:
-                print("Valor inexistente. Escolha novamente.")
-                nomes_atributos.insert(0, atributo)  # volta uma interação
-
+        for atributo in self.atributos:
+            while True:
+                print(f"Valores Disponíveis: {resultados_rolagem}")
+                try:
+                    escolha = int(input(f"Escolha o valor para {atributo}: "))
+                    if escolha in resultados_rolagem:
+                        resultados_rolagem.remove(escolha)
+                        self.atributos[atributo] = escolha
+                        break
+                    else:
+                        print("Valor inexistente. Escolha novamente.\n")
+                except ValueError:
+                    print("Entrada inválida. Digite um número.\n")
+                
         self.mostrar_atributos()
 
 
@@ -143,7 +147,7 @@ if __name__ == "__main__":
     personagem.nome_personagem()
 
     while True:
-        print("Escolha o seu ESTILO para rolagem dos atributos: ")
+        print("\n--- Escolha o seu ESTILO para rolagem dos atributos: ---")
         print("1. CLÁSSICO - Role 3d6 seis vezes e distribua entre os atributos, seguindo a ordem: Força, Destreza, Constituição, Inteligência, Sabedoria e Carisma.")
         print("2. AVENTUREIRO - Role 3d6 seis vezes e distribua como desejar os resultados nos seis atributos dos personagens.")
         print("3. HEROI - Role 4d6 eliminando o d6 mais baixo da soma. Faça isso seis vezes e distribua como desejar os resultados nos seis atributos dos personagens.")
@@ -161,4 +165,3 @@ if __name__ == "__main__":
             break
         else:
             print("\nValor inválido. Digite apenas 1, 2 ou 3.\n")
-
