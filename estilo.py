@@ -137,7 +137,7 @@ class Estilo(Personagem):
         for atributo, valor in self.atributos.items():
             print(f"{atributo}: {valor}")
 
-#Estrutura Main - executável
+#Estrutura Main - Menu e Executável
 if __name__ == "__main__":
     personagem = Estilo()
     personagem.nome_personagem()
