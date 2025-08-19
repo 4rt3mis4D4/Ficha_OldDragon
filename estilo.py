@@ -1,5 +1,6 @@
 import random
 
+#Declaração do dicionário como constante 
 ATRIBUTOS_DESC = {
     "Força": "Dano físico",
     "Destreza": "Precisão ágil",
