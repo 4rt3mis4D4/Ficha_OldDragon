@@ -1,11 +1,26 @@
 import random
 
+ATRIBUTOS_DESC = {
+    "Força": "Dano físico",
+    "Destreza": "Precisão ágil",
+    "Constituição": "Resistência vital",
+    "Inteligência": "Conhecimento lógico e magia",
+    "Sabedoria": "Percepção intuitiva",
+    "Carisma": "Influência social"
+}
+
 #Função que simula a rolagem de um dado, considerando a quantidade de lados e o número de rolagens
 def rolar_dado(lados, rolagem=1):
     #random.radiant(menor, max) sorteia números aleatórios
     #for _ in range(rolagem) realiza um loop de acordo com a quantidade de rolagens informada
     resultado = [random.randint(1, lados) for _ in range(rolagem)]
     return resultado, sum(resultado) #retorna os resultados das rolagens e sua soma
+
+#Função para exibir o dicionário de atributos
+def exibir_descAtr():
+    print("\n--- DICIONÁRIO DE ATRIBUTOS ---")
+    for atributo, descricao in ATRIBUTOS_DESC.items():
+        print(f"{atributo}: {descricao}")
 
 #Classe Personagem
 class Personagem:
@@ -21,7 +36,7 @@ class Personagem:
 class Estilo(Personagem):
     #Função - Estilo Clássico
     def classico (self):
-        print("Você escolheu o Estilo Clássico!! Vamos para a rolagem de seus atributos: ")
+        print("\n\nVocê escolheu o Estilo Clássico!! Vamos para a rolagem de seus atributos: ")
         nomes_atributos = ["Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma"]
 
         for atributo in nomes_atributos:
@@ -33,7 +48,14 @@ class Estilo(Personagem):
 
     #Função - Estilo Aventureiro
     def aventureiro (self):
-        print("Você escolheu o Estilo Aventureiro!! Vamos para a rolagem de seus atributos: ")
+        print("\n\nVocê escolheu o Estilo Aventureiro!!")
+
+        #Dicionário de atributos
+        if input("Deseja consultar o dicionário de atributos? (s/n): ").lower() == 's':
+            exibir_descAtr()
+
+        print("\nVamos para a rolagem de seus atributos:")
+
         nomes_atributos = ["Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma"]
         resultados_rolagem = []
 
@@ -65,7 +87,13 @@ class Estilo(Personagem):
 
     #Função - Estilo Herói
     def heroi (self):
-        print("Você escolheu o Estilo Herói!! Vamos para a rolagem de seus atributos: ")
+        print("\n\nVocê escolheu o Estilo Herói!!")
+
+        #Dicionário de atributos
+        if input("Deseja consultar o dicionário de atributos? (s/n): ").lower() == 's':
+            exibir_descAtr()
+
+        print("\nVamos para a rolagem de seus atributos:")
 
         nomes_atributos = ["Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma"]
         resultados_rolagem = []
@@ -114,7 +142,7 @@ if __name__ == "__main__":
     personagem.nome_personagem()
 
     while True:
-        print("Escolha o seu estilo: ")
+        print("Escolha o seu ESTILO para rolagem dos atributos: ")
         print("1. CLÁSSICO - Role 3d6 seis vezes e distribua entre os atributos, seguindo a ordem: Força, Destreza, Constituição, Inteligência, Sabedoria e Carisma.")
         print("2. AVENTUREIRO - Role 3d6 seis vezes e distribua como desejar os resultados nos seis atributos dos personagens.")
         print("3. HEROI - Role 4d6 eliminando o d6 mais baixo da soma. Faça isso seis vezes e distribua como desejar os resultados nos seis atributos dos personagens.")
@@ -132,3 +160,4 @@ if __name__ == "__main__":
             break
         else:
             print("\nValor inválido. Digite apenas 1, 2 ou 3.\n")
+
