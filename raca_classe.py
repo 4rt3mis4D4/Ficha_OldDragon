@@ -115,7 +115,7 @@ class Gnomo(Raca):
 class Meio_Elfo(Raca):
     def __init__(self):
         super().__init__()
-        self.nome = "Meio_Elfo"
+        self.nome = "Meio-Elfo"
 
         self.caract["Movimento"] = "9 Metros"
         self.caract["Infravisão"] = "9 Metros"
@@ -127,6 +127,68 @@ class Meio_Elfo(Raca):
             "Graciosos e Vigorosos": "+2 em Carisma e +1 em dois outros atributos; vantagem contra encantamento.",
             "Idioma Extra": "Fala Common, Élfico e mais um idioma à sua escolha.",
             "Imunidade": "Imune a efeitos mágicos que colocam para dormir."
+        }
+
+# Abstração da Classe
+class Classe(ABC):
+    def __init__(self):
+        self.nome = ""
+        self.artefatos = {
+            "Armas": None,
+            "Armaduras": None,
+            "Itens Mágicos": None
+        }
+
+    def artefatos_classe(self):
+        return self.artefatos
+
+    @abstractmethod
+    def habilidades_classe(self):
+        pass
+
+class Guerreiro(Classe):
+    def __init__(self):
+        super().__init__()
+        self.nome = "Guerreiro"
+
+        self.artefatos["Armas"] = "Pode usar todas as armas."
+        self.artefatos["Armaduras"] = "Pode usar todas as armaduras."
+        self.artefatos["Itens Mágicos"] = "Apenas pergaminhos de proteção."
+    def habilidades_classe(self):
+        return{
+            "Aparar": "O Guerreiro pode sacrificar seu escudo ou arma ao ser atingido por um ataque físico para absorver todo o dano, mas o item fica danificado ou é destruído, com itens mágicos podendo perder seus bônus permanentemente.",
+            "Maestria em Arma": "O Guerreiro se torna mestre em uma arma à sua escolha, recebendo um bônus de +1 no dano daquela arma.",
+            "Ataque Extra": "Um Guerreiro nível 6º ganha um segundo ataque em sequência com a mesma arma em que possui maestria, usando o mesmo bônus de ataque do primeiro."
+        }
+
+class Ladrao(Classe):
+    def __init__(self):
+        super().__init__()
+        self.nome = "Ladrão"
+
+        self.artefatos["Armas"] = "Apenas pequenas ou médias."
+        self.artefatos["Armaduras"] = "Apenas as leves."
+        self.artefatos["Itens Mágicos"] = "Apenas pergaminhos de proteção."
+    def habilidades_classe(self):
+        return{
+            "Ataque Furtivo": "Um Ladrão que ataca furtivamente causa o dobro de dano ao seu alvo.",
+            "Ouvir Ruídos": "Um Ladrão pode tentar ouvir ruídos à distância com 1-2 em 1d6 chance de sucesso, desde que esteja em um local silencioso e fora de combate.",
+            "Talentos de Ladrão": "Ladrões começam com 2 pontos em cada um dos cinco talentos (Armadilha, Arrombar, Escalar, Punga e Furtividade) e mais 2 pontos adicionais para distribuir livremente."
+        }
+
+class Mago(Classe):
+    def __init__(self):
+        super().__init__()
+        self.nome = "Mago"
+
+        self.artefatos["Armas"] = "Apenas pequenas"
+        self.artefatos["Armaduras"] = "Nenhuma"
+        self.artefatos["Itens Mágicos"] = "Todos"
+    def habilidades_classe(self):
+        return{
+            "Magias Arcanas": "Um Mago memoriza magias diariamente estudando seu grimório para escolher quais feitiços poderá lançar naquele dia.",
+            "Ler Magias": "Um Mago pode, uma vez por dia por nível, decifrar inscrições mágicas para identificar qual magia está escrita, mas não para entender sua mensagem ou propriedades de itens.",
+            "Detectar Magias": "Um Mago pode, uma vez por dia por nível, detectar a presença de magia em uma área após se concentrar por um tempo, percebendo apenas uma aura sem identificar detalhes."
         }
 
 # Função que simula a rolagem de um dado, considerando a quantidade de lados e o número de rolagens
@@ -194,13 +256,40 @@ class Personagem:
                 else:
                     print("\nValor inválido.\n")
             except ValueError:
-                print("Entrada inválida. Digite as opções de números propostos.\n")
+                print("Entrada inválida. Digite as opções dos números propostos.\n")
 
         print(f"\nVocê escolheu a raça: {self.raca.nome}")
+
+    def escolher_classe(self):
+        print("\n--- ESCOLHA A SUA CLASSE: ---\n")
+        print("1. Guerreiro - Aventureiros especializados em combate, sempre na linha de frente e mortais quando desembainham suas armas.")
+        print("2. Ladrão - Aventureiro táctico, perito em sobreviver em masmorras. Furtivo, traiçoeiro e fatal quando ataca suas vítimas sorrateiramente")
+        print("3. Mago - Aventureiro estudioso, especializado nas artes arcanas, dedicado a conjurar magias escritas em grimórios e pergaminhos.")
+
+        while True:
+            try:
+                opcao = int(input("\nEscolha uma classe (1-3): "))
+                if opcao == 1:
+                    self.classe = Guerreiro()
+                    break
+                elif opcao == 2:
+                    self.classe = Ladrao()
+                    break
+                elif opcao == 3:
+                    self.classe = Mago()
+                    break
+                else:
+                    print("\nValor inválido.\n")
+            except ValueError:
+                print("Entrada inválida. Digite as opções dos números propostos.\n")
+
+        print(f"\nVocê escolheu a raça: {self.classe.nome}")
+
 
     def exibir_ficha(self):
         print(f"\n=== FICHA DE {self.nome} ===")
         print(f"Raça: {self.raca.nome}")
+        print(f"Classe: {self.classe.nome}")
 
         # Exibe os atributos (resultado de cada rolagem e total da soma)
         print("\n--- ATRIBUTOS ---")
@@ -218,6 +307,18 @@ class Personagem:
         habilidades = self.raca.habilidades_raca()
         for nome, descricao in habilidades.items():
             print(f"{nome}: {descricao}")
+
+        # Exibe os artefatos da classe
+        print("\n--- ARTEFATOS DA CLASSE ---")
+        artefatos_classe = self.classe.artefatos_classe()
+        for chave, valor in artefatos_classe.items():
+            print(f"{chave}: {valor}")
+
+        # Exibe as habilidades da classe escolhida e sua definição
+        print("\n--- HABILIDADES DA CLASSE")
+        hab_classe = self.classe.habilidades_classe()
+        for chave, valor in hab_classe.items():
+            print(f"{chave}: {valor}")
 
 # Classe Estilo: Determinar atributos do personagem criado
 class Estilo(Personagem):
@@ -303,35 +404,39 @@ class Estilo(Personagem):
                     else:
                         print("Valor inexistente. Escolha novamente.\n")
                 except ValueError:
-                    print("Entrada inválida. Digite as opções de números propostos.\n")
+                    print("Entrada inválida. Digite as opções dos números propostos.\n")
+
+    def escolher_estilo(self):
+        while True:
+            print("\n--- ESCOLHA O SEU ESTILO: ---")
+            print(
+                "1. CLÁSSICO - Role 3d6 seis vezes e distribua entre os atributos, seguindo a ordem: Força, Destreza, Constituição, Inteligência, Sabedoria e Carisma.")
+            print(
+                "2. AVENTUREIRO - Role 3d6 seis vezes e distribua como desejar os resultados nos seis atributos dos personagens.")
+            print(
+                "3. HEROI - Role 4d6 eliminando o d6 mais baixo da soma. Faça isso seis vezes e distribua como desejar os resultados nos seis atributos dos personagens.")
+
+            opcao = int(input("\nEscolha um estilo (1-3): "))
+
+            if opcao == 1:
+                personagem.classico()
+                break
+            elif opcao == 2:
+                personagem.aventureiro()
+                break
+            elif opcao == 3:
+                personagem.heroi()
+                break
+            else:
+                print("\nValor inválido.\n")
 
 # Estrutura Main - Menu e Executável
 if __name__ == "__main__":
-    personagem = Estilo()
-    personagem.nome_personagem()
+    personagem = Estilo() # Herança
+    personagem.nome_personagem() # Função nome do personagem
 
-    while True:
-        print("\n--- ESCOLHA O SEU ESTILO: ---")
-        print(
-            "1. CLÁSSICO - Role 3d6 seis vezes e distribua entre os atributos, seguindo a ordem: Força, Destreza, Constituição, Inteligência, Sabedoria e Carisma.")
-        print(
-            "2. AVENTUREIRO - Role 3d6 seis vezes e distribua como desejar os resultados nos seis atributos dos personagens.")
-        print(
-            "3. HEROI - Role 4d6 eliminando o d6 mais baixo da soma. Faça isso seis vezes e distribua como desejar os resultados nos seis atributos dos personagens.")
-
-        estilo = int(input("\nEscolha um estilo (1-3): "))
-
-        if estilo == 1:
-            personagem.classico()
-            break
-        elif estilo == 2:
-            personagem.aventureiro()
-            break
-        elif estilo == 3:
-            personagem.heroi()
-            break
-        else:
-            print("\nValor inválido.\n")
-
+    personagem.escolher_estilo() # Função de escolha do Estilo
     personagem.escolher_raca() # Função de escolha da Raça
+    personagem.escolher_classe() # Função de escolha da Classe
+
     personagem.exibir_ficha() # Função impressão da ficha
