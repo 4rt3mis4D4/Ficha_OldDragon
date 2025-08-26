@@ -1,5 +1,5 @@
 import random
-from abc import abstractmethod, ABC
+from abc import abstractmethod, ABC # Importando biblioteca de Abstração
 
 # Declaração do dicionário como constante
 ATRIBUTOS_DESC = {
@@ -12,7 +12,7 @@ ATRIBUTOS_DESC = {
 }
 
 # Abstração da raça
-class Raca(ABC):
+class Raca(ABC): # Classe Abstrata
     def __init__(self):
         self.nome = ""
         self.caract = {
@@ -24,13 +24,13 @@ class Raca(ABC):
     def caracteristicas(self):
         return self.caract
 
-    @abstractmethod
+    @abstractmethod # Definindo método como Abstrato
     def habilidades_raca(self):
         pass
 
 class Humano(Raca):
     def __init__(self):
-        super().__init__()
+        super().__init__() # Sobrescrevendo o construtor
         self.nome = "Humano"
 
         self.caract["Movimento"] = "9 Metros"
