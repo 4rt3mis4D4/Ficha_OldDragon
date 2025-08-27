@@ -1,5 +1,5 @@
 # 🐉 Ficha OldDragon - livro I: regras básicas 🐉
-  **Aluna:** Gabriela Pedroso dos Santos Pontes
+  **Aluna:** Gabriela Pedroso dos Santos Pontes \n
   **Professor:** Aryel Marlus Repula de Oliveira
 
   Desenvolver em **Python**, utilizando conceitos de orientação a objetos, as regras para criação de personagem considerando:
