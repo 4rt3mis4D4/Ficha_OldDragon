@@ -1,5 +1,5 @@
 # 🐉 Ficha OldDragon - livro I: regras básicas 🐉
-<div style="background-color: blue;>
+<div style="background-color: #FF0000; color: white; padding: 20px;">
   **Aluna:** Gabriela Pedroso dos Santos Pontes<br/>
   **Professor:** Aryel Marlus Repula de Oliveira<br/><br/>
 </div>
