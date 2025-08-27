@@ -1,5 +1,8 @@
 # 🐉 Ficha OldDragon - livro I: regras básicas 🐉
-Desenvolver em **Python**, utilizando conceitos de orientação a objetos, as regras para criação de personagem considerando:
+  **Aluna:** Gabriela Pedroso dos Santos Pontes
+  **Professor:** Aryel Marlus Repula de Oliveira
+
+  Desenvolver em **Python**, utilizando conceitos de orientação a objetos, as regras para criação de personagem considerando:
 
 ⚔️**Definição de atributos:** Implementar as 3 formas de distribuição de atributos do personagem (clássica, heróica e aventureiro) (mesma lógica da atividade anterior, que não precisava apresentar).
 
