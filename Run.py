@@ -1,5 +1,5 @@
-from Personagem import Personagem
-from Ficha import exibir_ficha
+from Estrutura import Personagem
+from Estrutura import exibir_ficha
 from Estilo import Estilo
 
 # Estrutura Main - Menu e Executável
