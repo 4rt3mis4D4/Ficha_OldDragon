@@ -1,6 +1,5 @@
-from Dados import rolar_dado
-from Dicionario import exibir_descAtr
-from Personagem import Personagem
+from Utilitarios import rolar_dado, exibir_descAtr
+from Estrutura import Personagem
 
 class Estilo(Personagem):
     def distribuir_resultados(self, resultados_rolagem):
