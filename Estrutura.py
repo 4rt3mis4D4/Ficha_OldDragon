@@ -1,8 +1,7 @@
 from Raca import Humano, Elfo, Anao, Halfling, Gnomo, Meio_Elfo
 from Classe import Guerreiro, Ladrao, Mago
-from Dados import rolar_dado
-from Dicionario import exibir_descAtr
-from Ficha import exibir_ficha
+from Utilitarios import rolar_dado
+from Utilitarios import exibir_descAtr
 
 # Classe Personagem
 class Personagem:
@@ -19,9 +18,11 @@ class Personagem:
             "Carisma": 0
         }  # Conjunto atributos
 
+    # Solicitando o nome do personagem
     def nome_personagem(self):
         self.nome = input("Digite o nome do seu personagem: ")
 
+    # Escolha de Raça
     def escolher_raca(self):
         print("\n--- ESCOLHA A SUA RAÇA: ---\n")
         print("1. Humano - A raça mais versátil e adaptável, perfeita para qualquer classe")
@@ -59,6 +60,7 @@ class Personagem:
 
         print(f"\nVocê escolheu a raça: {self.raca.nome}")
 
+    # Escolha de Classe
     def escolher_classe(self):
         print("\n--- ESCOLHA A SUA CLASSE: ---\n")
         print("1. Guerreiro - Aventureiros especializados em combate, sempre na linha de frente e mortais quando desembainham suas armas.")
@@ -84,6 +86,7 @@ class Personagem:
 
         print(f"\nVocê escolheu a raça: {self.classe.nome}")
 
+    # Escolha de Estilo
     def escolher_estilo(self):
         while True:
             print("\n--- ESCOLHA O SEU ESTILO: ---")
@@ -107,3 +110,39 @@ class Personagem:
                 break
             else:
                 print("\nValor inválido.\n")
+
+# FUNÇÃO DE EXIBIR A FICHA
+
+def exibir_ficha(personagem):
+    print(f"\n=== FICHA DE {personagem.nome} ===")
+    print(f"Raça: {personagem.raca.nome}")
+    print(f"Classe: {personagem.classe.nome}")
+
+    # Exibe os atributos (resultado de cada rolagem e total da soma)
+    print("\n--- ATRIBUTOS ---")
+    for atributo, valor in personagem.atributos.items():
+        print(f"{atributo}: {valor}")
+
+    # Exibe: Movimento, Infravisão e Alinhamento
+    print("\n--- CARACTERÍSTICAS DA RAÇA ---")
+    caract = personagem.raca.caracteristicas()
+    for chave, valor in caract.items():
+        print(f"{chave}: {valor}")
+
+    # Exibe a habilidade da raça escolhida e sua definição
+    print("\n--- HABILIDADES DA RAÇA ---")
+    habilidades = personagem.raca.habilidades_raca()
+    for nome, descricao in habilidades.items():
+        print(f"{nome}: {descricao}")
+
+    # Exibe os artefatos da classe
+    print("\n--- ARTEFATOS DA CLASSE ---")
+    artefatos_classe = personagem.classe.artefatos_classe()
+    for chave, valor in artefatos_classe.items():
+        print(f"{chave}: {valor}")
+
+    # Exibe as habilidades da classe escolhida e sua definição
+    print("\n--- HABILIDADES DA CLASSE")
+    hab_classe = personagem.classe.habilidades_classe()
+    for chave, valor in hab_classe.items():
+        print(f"{chave}: {valor}")
