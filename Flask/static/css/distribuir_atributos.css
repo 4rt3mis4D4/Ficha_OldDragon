@@ -1,0 +1,305 @@
+/* Estilos específicos para a página de distribuição de atributos */
+body.atributos-page {
+    font-family: 'Cinzel', serif;
+    background: url("/static/img/fundo.png") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: auto;
+}
+
+body.atributos-page,
+body.atributos-page * {
+    cursor: url("/static/img/cursor.png"), auto !important;
+}
+
+body.atributos-page select,
+body.atributos-page button,
+body.atributos-page input,
+body.atributos-page textarea,
+body.atributos-page a {
+    cursor: url("/static/img/cursor.png"), auto !important;
+}
+
+body.atributos-page select:hover,
+body.atributos-page button:hover,
+body.atributos-page input:hover,
+body.atributos-page a:hover {
+    cursor: url("/static/img/cursor.png"), auto !important;
+}
+
+.atributos-page .container {
+    width: min(90%, 800px);
+    background: rgba(0, 0, 0, 0.85);
+    padding: clamp(20px, 3%, 40px);
+    border: min(0.3vw, 4px) solid #1a5fb4;
+    border-radius: min(1vw, 15px);
+    box-shadow: 0 0 min(2vw, 30px) rgba(26, 95, 180, 0.8);
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Cabeçalho */
+.atributos-page .header h1 {
+    font-size: clamp(22px, 3vw, 36px);
+    color: #1a5fb4;
+    text-shadow: 0 0 min(1vw, 15px) rgba(26, 95, 180, 0.8);
+    margin-bottom: min(2vh, 20px);
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* Informações do personagem */
+.atributos-page .info-text {
+    font-size: clamp(14px, 1.5vw, 20px);
+    margin-bottom: min(3vh, 30px);
+    padding: min(1.5vh, 15px);
+    background: rgba(26, 95, 180, 0.2);
+    border-radius: min(0.5vw, 8px);
+    border: 1px solid #1a5fb4;
+}
+
+.atributos-page .info-text strong {
+    color: #1a5fb4;
+}
+
+/* Mensagem de erro */
+.atributos-page .erro {
+    background: rgba(180, 26, 26, 0.3);
+    color: #ff6b6b;
+    padding: min(1.5vh, 15px);
+    border: 1px solid #ff6b6b;
+    border-radius: min(0.5vw, 8px);
+    margin-bottom: min(3vh, 30px);
+    font-size: clamp(13px, 1.4vw, 18px);
+}
+
+/* Container do formulário */
+.atributos-page .form-container {
+    width: 100%;
+    margin-bottom: min(3vh, 30px);
+}
+
+.atributos-page .form-container h2 {
+    font-size: clamp(18px, 2.2vw, 28px);
+    color: #1a5fb4;
+    margin-bottom: min(3vh, 30px);
+    text-shadow: 0 0 min(0.8vw, 12px) rgba(26, 95, 180, 0.6);
+    text-transform: uppercase;
+}
+
+/* Grid 2x3 para os atributos */
+.atributos-page .atributos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: min(2.5vh, 25px);
+    margin-bottom: min(3vh, 30px);
+}
+
+/* Grupos de atributos */
+.atributos-page .atributo-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: min(2vh, 20px);
+    background: rgba(26, 95, 180, 0.1);
+    border-radius: min(0.5vw, 8px);
+    border: 1px solid #1a5fb4;
+}
+
+.atributos-page .atributo-group label {
+    font-size: clamp(14px, 1.6vw, 20px);
+    color: #1a5fb4;
+    margin-bottom: min(1vh, 10px);
+    font-weight: bold;
+    text-shadow: 0 0 min(0.5vw, 8px) rgba(26, 95, 180, 0.6);
+    text-transform: uppercase;
+}
+
+.atributos-page .atributo-select {
+    padding: min(1.5vh, 15px) min(1vw, 12px);
+    font-size: clamp(13px, 1.4vw, 18px);
+    background: rgba(255, 255, 255, 0.1);
+    border: min(0.15vw, 2px) solid #1a5fb4;
+    border-radius: min(0.5vw, 8px);
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.atributos-page .atributo-select:focus {
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 min(1vw, 15px) rgba(26, 95, 180, 0.9);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.atributos-page .atributo-select option {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.atributos-page .atributo-select option:checked {
+    background: #1a5fb4;
+    color: white;
+}
+
+/* Botão de submit */
+.atributos-page button[type="submit"] {
+    background: #1a5fb4;
+    color: white;
+    padding: min(2vh, 18px) min(4vw, 50px);
+    font-size: clamp(16px, 1.8vw, 24px);
+    font-weight: bold;
+    border: min(0.2vw, 3px) solid white;
+    border-radius: min(0.6vw, 10px);
+    margin-top: min(2vh, 20px);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    width: 100%;
+    max-width: 400px;
+}
+
+.atributos-page button[type="submit"]:hover {
+    background: white;
+    color: #1a5fb4;
+    transform: scale(1.05);
+    box-shadow: 0 0 min(1.5vw, 25px) rgba(26, 95, 180, 0.9);
+}
+
+.atributos-page button[type="submit"]:disabled {
+    background: #555;
+    border-color: #999;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Rodapé */
+.atributos-page .footer {
+    font-size: clamp(12px, 1.2vw, 16px);
+    color: #cccccc;
+    margin-top: min(3vh, 30px);
+    font-style: italic;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 992px) {
+    .atributos-page .atributos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .atributos-page .container {
+        width: 95%;
+        padding: clamp(15px, 5%, 25px);
+    }
+    
+    .atributos-page .header h1 {
+        font-size: clamp(20px, 4.5vw, 28px);
+    }
+    
+    .atributos-page .info-text {
+        font-size: clamp(14px, 2.2vw, 18px);
+    }
+    
+    .atributos-page .form-container h2 {
+        font-size: clamp(16px, 3vw, 22px);
+    }
+    
+    .atributos-page .atributos-grid {
+        grid-template-columns: 1fr;
+        gap: min(2vh, 20px);
+    }
+    
+    .atributos-page .atributo-group label {
+        font-size: clamp(14px, 2.2vw, 18px);
+    }
+    
+    .atributos-page .atributo-select {
+        font-size: clamp(13px, 2vw, 16px);
+        padding: min(1.5vh, 12px) min(2vw, 15px);
+    }
+    
+    .atributos-page button[type="submit"] {
+        font-size: clamp(16px, 2.5vw, 20px);
+        padding: min(2vh, 16px) min(5vw, 40px);
+    }
+}
+
+@media (max-width: 480px) {
+    body.atributos-page {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+    
+    .atributos-page .container {
+        width: 100%;
+        border-radius: min(2vw, 12px);
+    }
+    
+    .atributos-page .atributo-select {
+        padding: 12px 15px;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    body.atributos-page {
+        padding: 10px;
+        align-items: flex-start;
+    }
+    
+    .atributos-page .container {
+        padding: 15px;
+        margin: 10px 0;
+    }
+    
+    .atributos-page .header h1 {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    
+    .atributos-page .info-text {
+        margin-bottom: 15px;
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .atributos-page .form-container h2 {
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+    
+    .atributos-page .atributos-grid {
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .atributos-page .atributo-group {
+        padding: 15px;
+    }
+    
+    .atributos-page .atributo-group label {
+        font-size: 16px;
+    }
+    
+    .atributos-page .atributo-select {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+    
+    .atributos-page button[type="submit"] {
+        padding: 12px 30px;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+}
