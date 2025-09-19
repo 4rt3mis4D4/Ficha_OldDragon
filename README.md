@@ -10,9 +10,9 @@
 
 📁 **FLASK**<br/>
 📌 Implementar um front-end para o projeto, seguindo os princípios de orientação a objetos e arquitetura MVC. O sistema oferece três métodos de distribuição de atributos (clássico, heróico e aventureiro), permite escolher entre três raças e três classes distintas.<br/><br/>
- ⚔️ Deve ter as 3 opções para distribuição dos atributos (clássico, heróico e aventureiro), escolha de raça e classe (3 de cada).
- ⚔️ Deve utilizar as classes que você já criou na entrega anterior, mas devem estar em uma pasta/package separado chamado por exemplo model.
- ⚔️ Utilizar arquitetura MVC, peça para a IA auxiliar a definir as pastas e arquivos internos necessários para a arquitetura.
+ ⚔️ Deve ter as 3 opções para distribuição dos atributos (clássico, heróico e aventureiro), escolha de raça e classe (3 de cada).<br/><br/>
+ ⚔️ Deve utilizar as classes que você já criou na entrega anterior, mas devem estar em uma pasta/package separado chamado por exemplo model.<br/><br/>
+ ⚔️ Utilizar arquitetura MVC, peça para a IA auxiliar a definir as pastas e arquivos internos necessários para a arquitetura.<br/><br/>
  ⚔️ Utilizar flask.
 
 
