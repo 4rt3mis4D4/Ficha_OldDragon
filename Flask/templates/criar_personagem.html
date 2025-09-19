@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Personagem - Old Dragon</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/criar_personagem.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='img/icone.png') }}" type="image/png">
+</head>
+<body class="criacao-page">
+    <div class="container">
+        <div class="header">
+            <h1>CRIAR PERSONAGEM</h1>
+        </div>
+        
+        <div class="form-container">
+            <form method="POST" action="{{ url_for('criar_personagem') }}">
+                <div class="form-group">
+                    <label for="nome">Nome do Personagem:</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite o nome do seu personagem">
+                </div>
+                
+                <div class="form-group">
+                    <label for="raca">Raça:</label>
+                    <select id="raca" name="raca" required>
+                        <option value="">Selecione uma raça</option>
+                        {% for key, value in racas.items() %}
+                        <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="classe">Classe:</label>
+                    <select id="classe" name="classe" required>
+                        <option value="">Selecione uma classe</option>
+                        {% for key, value in classes.items() %}
+                        <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="estilo">Estilo de Criação:</label>
+                    <select id="estilo" name="estilo" required>
+                        <option value="">Selecione um estilo</option>
+                        {% for key, value in estilos.items() %}
+                        <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <button type="submit">CONTINUAR PARA ATRIBUTOS</button>
+            </form>
+        </div>
+        
+        <div class="footer">
+            designed by Gabriela Pedroso
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/criar_personagem.js') }}"></script>
+</body>
+</html>
