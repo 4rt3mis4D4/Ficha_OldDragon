@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old Dragon RPG</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='img/icone.png') }}" type="image/png">
+</head>
+<body class="index-page">
+    <div class="container">
+        <div class="header">
+            <h1>🐉 Old Dragon RPG 🐉</h1>
+            <p>Entre no mundo de fantasia</p>
+        </div>
+        
+        <div class="welcome-box">
+            <h2>BEM-VINDO, AVENTUREIRO!</h2>
+            <p>Crie sua ficha de personagem para o sistema Old Dragon RPG</p>
+            <p>Escolha entre diferentes raças, classes e estilos de criação!</p>
+            
+            <a href="{{ url_for('criar_personagem') }}" class="btn-start">
+                Começar a Criar Personagem
+            </a>
+        </div>
+        
+        <div class="footer">
+            designed by Gabriela Pedroso
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>
