@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuir Atributos - Old Dragon</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/distribuir_atributos.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='img/icone.png') }}" type="image/png">
+</head>
+<body class="atributos-page">
+    <div class="container">
+        <div class="header">
+            <h1>Distribuir Atributos para {{ personagem.nome }}</h1>
+        </div>
+        
+        <div class="info-text">
+            <p><strong>Raça:</strong> {{ personagem.raca.nome }} | <strong>Classe:</strong> {{ personagem.classe.nome }} |
+            <strong>Estilo:</strong> {{ estilo|capitalize }}</p>
+        </div>
+        
+        <!-- MENSAGEM DE ERRO -->
+        {% if erro %}
+        <div class="erro">
+            <strong>Erro:</strong> {{ erro }}
+        </div>
+        {% endif %}
+        
+        <div class="form-container">
+            <form method="POST" id="atributos-form">
+                <h2>DISTRIBUA OS VALORES:</h2>
+                
+                <div class="atributos-grid">
+                    {% for atributo in personagem.atributos.keys() %}
+                    <div class="atributo-group">
+                        <label for="{{ atributo }}">{{ atributo }}:</label>
+                        <select id="{{ atributo }}" name="{{ atributo }}" class="atributo-select" required>
+                            <option value="">Selecione um valor</option>
+                            {% for valor in valores %}
+                                <option value="{{ valor }}">{{ valor }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <button type="submit" id="submit-btn">FINALIZAR PERSONAGEM</button>
+            </form>
+        </div>
+
+        <div class="footer">
+            designed by Gabriela Pedroso
+        </div>
+    </div>
+
+    <!-- Script para passar os valores do Flask para o JavaScript -->
+    <script>
+        window.valoresFlask = {{ valores | tojson }};
+    </script>
+    
+    <script src="{{ url_for('static', filename='js/distribuir_atributos.js') }}"></script>
+</body>
+</html>
