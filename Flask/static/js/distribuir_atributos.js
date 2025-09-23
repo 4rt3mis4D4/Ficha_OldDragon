@@ -1,9 +1,12 @@
+// JAVASCRIPT PARA A PÁGINA DE DISTRIBUIÇÃO DE ATRIBUTOS
+
 // Gerenciamento da distribuição de atributos
 const distribuirAtributos = {
-    valoresOriginais: [],
+    valoresOriginais: [], // Array com os valores originais do Flask
     ocorrenciasDisponiveis: [], // Array com todas as ocorrências individuais
     ocorrenciasSelecionadas: new Set(), // Índices das ocorrências selecionadas
 
+    // MÉTODO inicializar: Prepara os dados e inicia o sistema.
     inicializar: function() {
         // Obter valores do Flask e criar array de ocorrências com índices únicos
         this.valoresOriginais = [...window.valoresFlask];
@@ -18,6 +21,7 @@ const distribuirAtributos = {
         this.atualizarTodosSelects();
     },
 
+    // MÉTODO configurarEventListeners: Configura os eventos para os selects e o formulário.
     configurarEventListeners: function() {
         const selects = document.querySelectorAll('.atributo-select');
         
@@ -41,6 +45,7 @@ const distribuirAtributos = {
         }
     },
 
+    // MÉTODO gerenciarSelecao: Usa o formato "valor-índice" e identifica unicamente cada ocorrência, mesmo que valores sejam iguais.
     gerenciarSelecao: function(select) {
         const novoValorCompleto = select.value;
         const valorAnteriorCompleto = select.dataset.valorAnterior || '';
@@ -63,6 +68,7 @@ const distribuirAtributos = {
         this.atualizarTodosSelects();
     },
 
+    // MÉTODO atualizarTodosSelects: Dinamicamente atualiza todos os dropdowns para mostrar apenas valores disponíveis.
     atualizarTodosSelects: function() {
         const selects = document.querySelectorAll('.atributo-select');
         
@@ -102,30 +108,19 @@ const distribuirAtributos = {
         });
     },
 
+    // MÉTODOS DE VALIDAÇÃO:
     validarSelect: function(select) {
-        if (select.value) {
-            select.style.borderColor = '';
-        } else {
-            select.style.borderColor = 'red';
-        }
+        // Retorna o estado da validação
+        return Boolean(select.value);
     },
 
     validarFormulario: function() {
         const selects = document.querySelectorAll('.atributo-select');
-        let todosPreenchidos = true;
         
-        selects.forEach(select => {
-            if (!select.value) {
-                todosPreenchidos = false;
-                select.style.borderColor = 'red';
-            } else {
-                select.style.borderColor = '';
-            }
-        });
-        
-        return todosPreenchidos;
+        // Verifica se todos os selects têm valores selecionados
+        return Array.from(selects).every(select => Boolean(select.value));
     }
-};
+}; 
 
 // Inicializar quando a página carregar
 document.addEventListener('DOMContentLoaded', function() {
