@@ -1,8 +1,10 @@
-// ficha.js - JavaScript para a ficha do personagem (apenas melhorias de UX)
+// JAVASCRIPT PARA A PÁGINA DA FICHA
+
+// Garante que todos os elementos HTML estejam carregados antes do JS tentar acessá-los
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Ficha do personagem carregada');
+    console.log('Ficha do personagem carregada'); // Log informativo no console do navegador
     
-    // Efeitos visuais para a ficha
+    // Efeitos visuais para a ficha: adiciona transição suave de cor para células de tabela
     const tabelas = document.querySelectorAll('table');
     tabelas.forEach(tabela => {
         tabela.addEventListener('mouseover', function(e) {
@@ -10,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.target.style.transition = 'background-color 0.3s ease';
             }
         });
-    });
+    }); 
     
-    // Adicionar tooltip para células com texto muito longo
+    // Adiciona tooltips automáticos para texto muito longo
     const celulasTabela = document.querySelectorAll('td');
     celulasTabela.forEach(celula => {
         if (celula.textContent.length > 50) {
