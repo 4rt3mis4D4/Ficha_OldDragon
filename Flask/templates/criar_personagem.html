@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Personagem - Old Dragon</title>
+    <!-- Função URL do Flask para direcionar para a pasta CSS e o respectivo código da página -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/criar_personagem.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Função URL do Flask para direcionar para a pasta IMG e o respectivo código da página -->
     <link rel="icon" href="{{ url_for('static', filename='img/icone.png') }}" type="image/png">
 </head>
 <body class="criacao-page">
@@ -15,7 +17,7 @@
         </div>
         
         <div class="form-container">
-            <form method="POST" action="{{ url_for('criar_personagem') }}">
+            <form method="POST" action="{{ url_for('criar_personagem') }}"> <!-- Acessa o formulário e converte de forma segura -->
                 <div class="form-group">
                     <label for="nome">Nome do Personagem:</label>
                     <input type="text" id="nome" name="nome" required placeholder="Digite o nome do seu personagem">
@@ -25,9 +27,9 @@
                     <label for="raca">Raça:</label>
                     <select id="raca" name="raca" required>
                         <option value="">Selecione uma raça</option>
-                        {% for key, value in racas.items() %}
+                        {% for key, value in racas.items() %} <!-- Percorre os itens do dicionário de raças em Python -->
                         <option value="{{ key }}">{{ value }}</option>
-                        {% endfor %}
+                        {% endfor %} <!-- Final -->
                     </select>
                 </div>
                 
@@ -35,9 +37,9 @@
                     <label for="classe">Classe:</label>
                     <select id="classe" name="classe" required>
                         <option value="">Selecione uma classe</option>
-                        {% for key, value in classes.items() %}
+                        {% for key, value in classes.items() %} <!-- Percorre os itens do dicionário de classes em Python -->
                         <option value="{{ key }}">{{ value }}</option>
-                        {% endfor %}
+                        {% endfor %} <!-- Final -->
                     </select>
                 </div>
                 
@@ -45,9 +47,9 @@
                     <label for="estilo">Estilo de Criação:</label>
                     <select id="estilo" name="estilo" required>
                         <option value="">Selecione um estilo</option>
-                        {% for key, value in estilos.items() %}
+                        {% for key, value in estilos.items() %} <!-- Percorre os itens do dicionário de estilo em Python -->
                         <option value="{{ key }}">{{ value }}</option>
-                        {% endfor %}
+                        {% endfor %} <!-- Final -->
                     </select>
                 </div>
                 
@@ -60,6 +62,7 @@
         </div>
     </div>
     
+    <!-- Função URL do Flask para direcionar para a pasta JS e o respectivo código da página -->
     <script src="{{ url_for('static', filename='js/criar_personagem.js') }}"></script>
 </body>
 </html>
