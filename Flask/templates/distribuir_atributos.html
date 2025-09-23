@@ -4,25 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distribuir Atributos - Old Dragon</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/distribuir_atributos.css') }}">
+    <!-- Função URL do Flask para direcionar para a pasta CSS e o respectivo código da página -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/distribuir_atributos.css') }}"> 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Função URL do Flask para direcionar para a pasta IMG e o respectivo código da página -->
     <link rel="icon" href="{{ url_for('static', filename='img/icone.png') }}" type="image/png">
 </head>
 <body class="atributos-page">
     <div class="container">
         <div class="header">
-            <h1>Distribuir Atributos para {{ personagem.nome }}</h1>
+            <h1>Distribuir Atributos para {{ personagem.nome }}</h1> <!-- Acessa o atributo nome por meio do objeto Personagem -->
         </div>
         
         <div class="info-text">
+            <!-- Por meio de Personagem retorna um objeto e acessa seu atributo nome -->
             <p><strong>Raça:</strong> {{ personagem.raca.nome }} | <strong>Classe:</strong> {{ personagem.classe.nome }} |
-            <strong>Estilo:</strong> {{ estilo|capitalize }}</p>
+            <!-- Retorna o estilo escolhido com a primeira letra em maiúscula -->
+            <strong>Estilo:</strong> {{ estilo|capitalize }}</p> 
         </div>
         
         <!-- MENSAGEM DE ERRO -->
-        {% if erro %}
+        {% if erro %} <!-- Estrutura de condição: verifica se a variável erro existe e não é nula -->
         <div class="erro">
-            <strong>Erro:</strong> {{ erro }}
+            <strong>Erro:</strong> {{ erro }} <!-- Se verdadeira, exibe a mensagem de erro -->
         </div>
         {% endif %}
         
@@ -31,17 +35,18 @@
                 <h2>DISTRIBUA OS VALORES:</h2>
                 
                 <div class="atributos-grid">
+                    <!-- Realiza um loop que retorna todas as chaves do atributo (Força, Destreza, Constituição, ...)-->
                     {% for atributo in personagem.atributos.keys() %}
                     <div class="atributo-group">
                         <label for="{{ atributo }}">{{ atributo }}:</label>
                         <select id="{{ atributo }}" name="{{ atributo }}" class="atributo-select" required>
                             <option value="">Selecione um valor</option>
-                            {% for valor in valores %}
-                                <option value="{{ valor }}">{{ valor }}</option>
-                            {% endfor %}
+                            {% for valor in valores %} <!-- Loop da lista de valores do atributo selecionado -->
+                                <option value="{{ valor }}">{{ valor }}</option> <!-- Exibe cada valor das rolagens -->
+                            {% endfor %} <!-- Fim do loop valores -->
                         </select>
                     </div>
-                    {% endfor %}
+                    {% endfor %} <!-- Fim do loop chaves do atributo -->>
                 </div>
                 
                 <button type="submit" id="submit-btn">FINALIZAR PERSONAGEM</button>
@@ -53,11 +58,12 @@
         </div>
     </div>
 
-    <!-- Script para passar os valores do Flask para o JavaScript -->
+    <!-- Script para passar os valores do Flask (Python) para o JavaScript -->
     <script>
         window.valoresFlask = {{ valores | tojson }};
     </script>
     
+    <!-- Função URL do Flask para direcionar para a pasta JS e o respectivo código da página -->
     <script src="{{ url_for('static', filename='js/distribuir_atributos.js') }}"></script>
 </body>
 </html>
