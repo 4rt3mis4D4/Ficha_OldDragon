@@ -2,7 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Ficha de {{ personagem.nome }}</title>
+    <title>Ficha de {{ personagem.nome }}</title> <!-- Acessa o atributo nome por meio do objeto Personagem -->
+    <!-- Função URL do Flask para direcionar para a pasta CSS e IMG e o respectivo código da página -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ficha.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='img/icone.png') }}" type="image/png">
 </head>
@@ -10,9 +11,11 @@
     <div class="ficha-container">
         <div class="cabecalho-ficha">
             <h1>FICHA DE PERSONAGEM - OLD DRAGON RPG</h1>
+            <!-- Exibe informações básicas do personagem a partir do objeto Python (Personagem) -->
             <p><strong>Nome:</strong> {{ personagem.nome }} | <strong>Raça:</strong> {{ personagem.raca.nome }} | <strong>Classe:</strong> {{ personagem.classe.nome }}</p>
         </div>
         
+        <!-- TABELA DE ATRIBUTOS -->
         <div class="secao info-basica">
             <div>
                 <h2>Atributos</h2>
@@ -21,6 +24,7 @@
                         <th>Atributo</th>
                         <th>Valor</th>
                     </tr>
+                    <!-- Por meio do objeto Personagem, acessa os valores de cada atributo -->
                     <tr>
                         <td><strong>Força</strong></td>
                         <td class="valor-atributo">{{ personagem.atributos.Força }}</td>
@@ -49,51 +53,57 @@
             </div>
         </div>
         
+        <!-- RAÇA -->
         <div class="secao">
             <h2>Características da Raça</h2>
             <table class="ficha-table">
+                <!-- Por meio de um laço de repetição acessa o dicionário de caracteristicas (Movimento, Infravisão e Alinhamento) da raça -->
                 {% for chave, valor in personagem.raca.caracteristicas().items() %}
                 <tr>
-                    <td><strong>{{ chave }}</strong></td>
-                    <td>{{ valor }}</td>
+                    <td><strong>{{ chave }}</strong></td> <!-- Retorna nome da caracteristica -->
+                    <td>{{ valor }}</td> <!-- Retorna valor -->
                 </tr>
-                {% endfor %}
+                {% endfor %} <!-- Fim do laço de repetição -->
             </table>
         </div>
         
         <div class="secao">
             <h2>Habilidades da Raça</h2>
             <table class="ficha-table">
+                <!-- Por meio de um laço de repetição acessa o dicionário de habilidades da raça -->
                 {% for nome, descricao in personagem.raca.habilidades_raca().items() %}
                 <tr>
-                    <td><strong>{{ nome }}</strong></td>
-                    <td>{{ descricao }}</td>
+                    <td><strong>{{ nome }}</strong></td> <!-- Retorna nome da habilidade -->
+                    <td>{{ descricao }}</td> <!-- Retorna descrição da habilidade -->
                 </tr>
-                {% endfor %}
+                {% endfor %} <!-- Fim do laõ de repetição -->
             </table>
         </div>
         
+        <!-- CLASSE -->
         <div class="secao">
             <h2>Artefatos da Classe</h2>
             <table class="ficha-table">
+                <!-- Por meio de um laço de repetição acessa o dicionário de artefatos (Armas, Armadura e Itens Mágicos) da classe-->
                 {% for chave, valor in personagem.classe.artefatos_classe().items() %}
                 <tr>
-                    <td><strong>{{ chave }}</strong></td>
-                    <td>{{ valor }}</td>
+                    <td><strong>{{ chave }}</strong></td> <!-- Retorna nome do artefato -->
+                    <td>{{ valor }}</td> <!-- Retorna valor do artefato da classe -->
                 </tr>
-                {% endfor %}
+                {% endfor %} <!-- Fim do laço de repetição -->
             </table>
         </div>
         
         <div class="secao">
             <h2>Habilidades da Classe</h2>
             <table class="ficha-table">
+                <!-- Por meio de um laço de repetição acessa o dicionário de habilidades da classe-->
                 {% for chave, valor in personagem.classe.habilidades_classe().items() %}
                 <tr>
-                    <td><strong>{{ chave }}</strong></td>
-                    <td>{{ valor }}</td>
+                    <td><strong>{{ chave }}</strong></td> <!-- Retorna nome da habilidade -->
+                    <td>{{ valor }}</td> <!-- Retorna descrição -->
                 </tr>
-                {% endfor %}
+                {% endfor %} <!-- Fim do laço de repetição -->
             </table>
         </div>
         
@@ -104,6 +114,8 @@
     </div>
     
     <a href="/novo" class="btn-novo">Criar Novo Personagem</a>
+    
+    <!-- Função URL do Flask para direcionar para a pasta JS e o respectivo código da página -->
     <script src="{{ url_for('static', filename='js/ficha.js') }}"></script>
 </body>
 </html>
