@@ -1,0 +1,183 @@
+/* Reset e configurações base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+body {
+    font-family: 'Cinzel', serif;
+    background: url("/static/img/fundo.png") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+body.index-page,
+body.index-page * {
+    cursor: url("/static/img/cursor.png"), auto !important;
+}
+
+body.index-page .btn-start,
+body.index-page .btn-start:hover,
+body.index-page a,
+body.index-page a:hover,
+body.index-page button,
+body.index-page button:hover,
+body.index-page input,
+body.index-page textarea {
+    cursor: url("/static/img/cursor.png"), auto !important;
+}
+
+.container {
+    width: min(90%, 800px);
+    background: rgba(0, 0, 0, 0.8);
+    padding: clamp(20px, 3%, 40px);
+    border: min(0.3vw, 4px) solid #1a5fb4;
+    border-radius: min(1vw, 15px);
+    box-shadow: 0 0 min(2vw, 30px) rgba(26, 95, 180, 0.8);
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Cabeçalho */
+.header h1 {
+    font-size: clamp(24px, 3.5vw, 48px);
+    color: #1a5fb4;
+    text-shadow: 0 0 min(1vw, 15px) rgba(26, 95, 180, 0.8);
+    margin-bottom: min(1.5vh, 20px);
+    line-height: 1.2;
+}
+
+.header p {
+    font-size: clamp(16px, 1.8vw, 28px);
+    color: #ffffff;
+    margin-bottom: min(3vh, 30px);
+    text-transform: uppercase;
+}
+
+/* Caixa de boas-vindas */
+.welcome-box {
+    padding: min(2vh, 20px) 0;
+}
+
+.welcome-box h2 {
+    font-size: clamp(20px, 2.5vw, 36px);
+    color: #1a5fb4;
+    text-transform: uppercase;
+    margin-bottom: min(2vh, 20px);
+    text-shadow: 0 0 min(0.8vw, 12px) rgba(26, 95, 180, 0.6);
+    letter-spacing: min(0.1vw, 2px);
+}
+
+.welcome-box p {
+    font-size: clamp(14px, 1.5vw, 22px);
+    margin-bottom: min(1.5vh, 15px);
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Botão de início */
+.btn-start {
+    display: inline-block;
+    background: #1a5fb4;
+    color: white;
+    padding: min(1.5vh, 15px) min(3vw, 40px);
+    text-decoration: none;
+    font-size: clamp(16px, 1.8vw, 28px);
+    font-weight: bold;
+    border: min(0.2vw, 3px) solid white;
+    border-radius: min(0.6vw, 10px);
+    margin-top: min(2vh, 20px);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-start:hover {
+    background: white;
+    color: #1a5fb4;
+    transform: scale(1.05);
+    box-shadow: 0 0 min(1.5vw, 25px) rgba(26, 95, 180, 0.9);
+}
+
+/* Rodapé */
+.footer {
+    font-size: clamp(12px, 1.2vw, 18px);
+    color: #cccccc;
+    margin-top: min(3vh, 30px);
+    font-style: italic;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: clamp(15px, 4%, 30px);
+    }
+    
+    .header h1 {
+        font-size: clamp(22px, 5vw, 32px);
+    }
+    
+    .welcome-box h2 {
+        font-size: clamp(18px, 4vw, 28px);
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+    
+    .container {
+        width: 100%;
+        border-radius: min(2vw, 12px);
+    }
+    
+    .btn-start {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+        margin: 10px 0;
+    }
+    
+    .header h1 {
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+    
+    .header p {
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+    
+    .welcome-box {
+        padding: 10px 0;
+    }
+    
+    .btn-start {
+        margin-top: 15px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
