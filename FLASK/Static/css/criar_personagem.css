@@ -1,0 +1,220 @@
+/* Estilos específicos para a página de criação de personagem */
+body.criacao-page {
+    font-family: 'Cinzel', serif;
+    background: url("/static/img/fundo.png") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: auto;
+}
+
+body.criacao-page,
+body.criacao-page * {
+    cursor: url("/static/img/cursor.png"), auto !important;
+}
+
+body.criacao-page input,
+body.criacao-page select,
+body.criacao-page textarea,
+body.criacao-page button,
+body.criacao-page a,
+body.criacao-page input:hover,
+body.criacao-page select:hover,
+body.criacao-page button:hover,
+body.criacao-page a:hover {
+    cursor: url("/static/img/cursor.png"), auto !important;
+}
+
+.criacao-page .container {
+    width: min(90%, 700px);
+    background: rgba(0, 0, 0, 0.85);
+    padding: clamp(20px, 3%, 40px);
+    border: min(0.3vw, 4px) solid #1a5fb4;
+    border-radius: min(1vw, 15px);
+    box-shadow: 0 0 min(2vw, 30px) rgba(26, 95, 180, 0.8);
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Cabeçalho */
+.criacao-page .header h1 {
+    font-size: clamp(24px, 3.5vw, 42px);
+    color: #1a5fb4;
+    text-shadow: 0 0 min(1vw, 15px) rgba(26, 95, 180, 0.8);
+    margin-bottom: min(3vh, 30px);
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* Container do formulário */
+.criacao-page .form-container {
+    width: 100%;
+    margin-bottom: min(3vh, 30px);
+}
+
+.criacao-page form {
+    display: flex;
+    flex-direction: column;
+    gap: min(2.5vh, 25px);
+}
+
+/* Grupos do formulário */
+.criacao-page .form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.criacao-page .form-group label {
+    font-size: clamp(16px, 1.8vw, 24px);
+    color: #1a5fb4;
+    margin-bottom: min(1vh, 10px);
+    font-weight: bold;
+    text-shadow: 0 0 min(0.5vw, 8px) rgba(26, 95, 180, 0.6);
+}
+
+.criacao-page .form-group input,
+.criacao-page .form-group select {
+    padding: min(1.5vh, 15px) min(1vw, 15px);
+    font-size: clamp(14px, 1.5vw, 20px);
+    background: rgba(255, 255, 255, 0.1);
+    border: min(0.15vw, 2px) solid #1a5fb4;
+    border-radius: min(0.5vw, 8px);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.criacao-page .form-group input:focus,
+.criacao-page .form-group select:focus {
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 min(1vw, 15px) rgba(26, 95, 180, 0.9);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.criacao-page .form-group input::placeholder {
+    color: #cccccc;
+    font-style: italic;
+}
+
+.criacao-page .form-group select option {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+/* Botão de submit */
+.criacao-page button[type="submit"] {
+    background: #1a5fb4;
+    color: white;
+    padding: min(1.8vh, 18px) 0;
+    font-size: clamp(16px, 1.8vw, 24px);
+    font-weight: bold;
+    border: min(0.2vw, 3px) solid white;
+    border-radius: min(0.6vw, 10px);
+    margin-top: min(2vh, 20px);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+}
+
+.criacao-page button[type="submit"]:hover {
+    background: white;
+    color: #1a5fb4;
+    transform: scale(1.05);
+    box-shadow: 0 0 min(1.5vw, 25px) rgba(26, 95, 180, 0.9);
+}
+
+/* Rodapé */
+.criacao-page .footer {
+    font-size: clamp(12px, 1.2vw, 16px);
+    color: #cccccc;
+    margin-top: min(3vh, 30px);
+    font-style: italic;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    .criacao-page .container {
+        width: 95%;
+        padding: clamp(15px, 5%, 25px);
+    }
+    
+    .criacao-page .header h1 {
+        font-size: clamp(22px, 5.5vw, 32px);
+    }
+    
+    .criacao-page .form-group label {
+        font-size: clamp(16px, 3vw, 22px);
+    }
+    
+    .criacao-page .form-group input,
+    .criacao-page .form-group select {
+        font-size: clamp(14px, 2.5vw, 18px);
+        padding: min(1.5vh, 12px) min(2vw, 15px);
+    }
+    
+    .criacao-page button[type="submit"] {
+        font-size: clamp(16px, 3vw, 20px);
+        padding: min(2vh, 16px) 0;
+    }
+}
+
+@media (max-width: 480px) {
+    body.criacao-page {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+    
+    .criacao-page .container {
+        width: 100%;
+        border-radius: min(2vw, 12px);
+    }
+    
+    .criacao-page .form-group input,
+    .criacao-page .form-group select {
+        padding: 12px 15px;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    body.criacao-page {
+        padding: 10px;
+        align-items: flex-start;
+    }
+    
+    .criacao-page .container {
+        padding: 15px;
+        margin: 10px 0;
+    }
+    
+    .criacao-page .header h1 {
+        margin-bottom: 15px;
+        font-size: 22px;
+    }
+    
+    .criacao-page form {
+        gap: 15px;
+    }
+    
+    .criacao-page .form-group label {
+        font-size: 16px;
+    }
+    
+    .criacao-page .form-group input,
+    .criacao-page .form-group select {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+    
+    .criacao-page button[type="submit"] {
+        padding: 12px 0;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+}
