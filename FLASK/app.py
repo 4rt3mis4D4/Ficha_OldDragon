@@ -2,11 +2,11 @@
 from flask import Flask, render_template, request, session, redirect, url_for 
 
 # Importando classes e funções dos arquivos Python da pasta "model"
-from Model.estrutura import Personagem
-from Model.raca import Humano, Elfo, Anao, Halfling, Gnomo, Meio_Elfo
-from Model.classe import Guerreiro, Ladrao, Mago
-from Model.utilitarios import rolar_dado
-from Model.estilo import Estilo
+from model.estrutura import Personagem
+from model.raca import Humano, Elfo, Anao, Halfling, Gnomo, Meio_Elfo
+from model.classe import Guerreiro, Ladrao, Mago
+from model.utilitarios import rolar_dado
+from model.estilo import Estilo
 
 from collections import Counter # Validação de Atributos
 
