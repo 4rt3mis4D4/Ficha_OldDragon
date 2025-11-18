@@ -1,5 +1,5 @@
-from .Estrutura import exibir_ficha
-from .Estilo import Estilo
+from Model.Estrutura import exibir_ficha
+from Model.Estilo import Estilo
 
 # Estrutura Main - Menu e Executável
 if __name__ == "__main__":
